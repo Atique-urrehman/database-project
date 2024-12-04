@@ -1,0 +1,121 @@
+<!-- app/templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .logout-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #665f5f;
+        }
+
+        ul.news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.news-list li {
+            margin: 15px 0;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul.news-list li:last-child {
+            border-bottom: none;
+        }
+
+        ul.news-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        ul.news-list a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .read-more {
+            margin-top: 10px;
+ 
+             font-size: 14px;
+            color: #888;
+        }
+
+        .read-more:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>News Website</h1>
+    <form action="/logout" method="POST">
+        <button type="submit" class="logout-button">Log Out</button>
+    </form>
+</header>
+
+<div class="container">
+    <h1>Latest News</h1>
+    <ul class="news-list">
+        <!-- Loop through news items dynamically -->
+        {% for news in news_items %}
+            <li>
+                <a href="/news/{{ news.news_id }}">{{ news.news_title }}</a>
+                <p class="read-more">Click to read more</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
